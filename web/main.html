@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lyric Finder</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript">
+
+        function find()
+        {
+            var singer = document.getElementById('singer').value;
+            var song = document.getElementById('song').value;
+
+            eel.test(singer,song);
+
+
+        }
+
+        eel.expose(setLyrics);
+        function setLyrics(lyrics)
+        {
+            $('#box1').hide();
+            $('#box2').show();
+            $('#lyrics').text(lyrics);
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+          width: 20px;
+        }
+        body{
+            margin:0px;
+            overflow:hidden;
+        }
+        #topimg{
+            height:100vh;
+            width:100%;
+        }
+        #box1
+        {
+            height:400px;
+            width:300px;
+            position:absolute;
+            top:50%;
+            left:75%;
+            transform:translate(-50%,-50%);
+            z-index:9999;
+        }
+        #box2{
+            width:400px;
+            height:400px;
+            padding:10px;
+            overflow:hidden;
+            position:absolute;
+            top:40%;
+            left:75%;
+            transform:translate(-50%,-50%);
+            display:none;
+            z-index:9999;
+
+        }
+        label{
+            font-family:arial;
+            font-size:13px;
+            color:white;
+            margin-left:5px;
+        }
+        #singer,#song{
+            height:30px;
+            width:300px;
+            background-color:transparent;
+            border:2px solid #6f7178;
+            margin-bottom:40px;
+            border-radius:15px;
+            color:white;
+            outline:none;
+            padding-left:5px;
+        }
+        #search{
+            height:35px;
+            width:300px;
+            background-color:#35ddde;
+            font-family:arial;
+            font-size:12px;
+            color:white;
+            border:none;
+            outline:none;
+            border-radius:15px;
+        }
+        #lyrics{
+            width:400px;
+            height:400px;
+            padding:10px;
+            overflow:hidden;
+            overflow-y:scroll;
+            color:white;
+            font-size:15px;
+            text-align:justify;
+
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <label>SINGER</label>
+        <input type="text" id="singer"/>
+        <label>SONG</label>
+        <input type="text" id="song"/>
+        <input type="button" id="search" onclick="find()" value="SEARCH"/>
+    </div>
+
+    <div id="box2">
+        <div id="lyrics"></div>
+    </div>
+
+    <img src="BG.jpg" id="topimg" />
+
+
+</body>
+</html>
